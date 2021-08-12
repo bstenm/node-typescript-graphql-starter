@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { server } from './server';
+import { server } from '../src/expressServer';
 import fs from 'fs';
 
 jest.mock('fs');
