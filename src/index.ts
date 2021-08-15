@@ -1,15 +1,19 @@
+import { createConnection } from 'typeorm';
+import config from './config';
 import { apolloServer, app } from './graphqlServer';
-import config from './config/environment';
+import { log } from './logger';
 
-type ServerConfig = {
-  host: string;
-  port: number;
-};
+const { host, port } = config.server;
 
-const { host, port }: ServerConfig = config.server;
-
-app.listen({ port, host }, () =>
-  console.log(
-    `🚀 Server ready at http://${host}:${port}${apolloServer.graphqlPath}`
-  )
-);
+createConnection()
+  .then(() => {
+    app.listen({ port, host }, () => {
+      log.info('server.start.success');
+      console.log(
+        `🚀 Server ready at http://${host}:${port}${apolloServer.graphqlPath}`
+      );
+    });
+  })
+  .catch((e) => {
+    log.error(`db.connection.error: ${e}`);
+  });
