@@ -14,6 +14,8 @@
     "dev": "NODE_ENV=development nodemon",
     "build": "rimraf dist && tsc",
     "test": "jest",
+    "test:e2e": " jest --roots e2e_tests --runInBand",
+    "test:e2e:watch": " jest --roots e2e_tests --watch",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "lint": "eslint . --ext .ts",
@@ -55,7 +57,7 @@
     "nodemon": "^2.0.12",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
-    "supertest": "^6.1.4",
+    "supertest": "^6.1.5",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.2.0"
   }

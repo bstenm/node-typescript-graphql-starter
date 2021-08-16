@@ -13,3 +13,5 @@ app.get('/save-key', (_, res) => {
   fs.appendFileSync(`${process.cwd()}/keys.txt`, `${hash}\n`);
   res.send({ success: true });
 });
+
+export { app };
