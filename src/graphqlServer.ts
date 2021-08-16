@@ -3,7 +3,7 @@ import { ApolloServer, gql } from 'apollo-server-express';
 // For typegraphql type refelction to work (https://typegraphql.com/docs/installation.html)
 import 'reflect-metadata';
 import { User } from './entity/User';
-import { getRepository } from 'typeorm';
+import { Orm } from './orm';
 
 const typeDefs = gql`
   type User {
@@ -33,7 +33,7 @@ const resolvers = {
       const user = new User();
       user.email = email;
       user.username = username;
-      return getRepository(User).save(user);
+      return Orm.addUser(user);
     },
   },
 };
