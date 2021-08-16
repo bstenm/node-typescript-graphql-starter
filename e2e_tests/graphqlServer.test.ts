@@ -1,10 +1,7 @@
-import { Server } from 'http';
 import supertest from 'supertest';
 import { Connection, createConnection } from 'typeorm';
-import config from '../src/config';
-import { apolloServer, app } from '../src/graphqlServer';
+import { app } from '../src/graphqlServer';
 
-let server: Server;
 let connection: Connection;
 
 const request = supertest(app);
@@ -12,18 +9,11 @@ const request = supertest(app);
 describe('Graphql server', () => {
   beforeAll(async () => {
     connection = await createConnection('test');
-    const { host, port } = config.server;
-    server = app.listen({ port, host }, () => {
-      console.log(
-        `🚀 Server ready at http://${host}:${port}${apolloServer.graphqlPath}`
-      );
-    });
   });
 
   afterAll(async () => {
     // Clean up
     await connection.close();
-    server.close();
   });
 
   it('Returns greeting', (done) => {

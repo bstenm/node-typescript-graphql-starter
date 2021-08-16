@@ -1,26 +1,18 @@
-import { Server } from 'http';
+// import { Server } from 'http';
 import supertest from 'supertest';
-import config from '../src/config';
+// import config from '../src/config';
 import { app } from '../src/expressServer';
 import fs from 'fs';
 
-let server: Server;
+// let server: Server;
 
 const request = supertest(app);
 
 const keyFile: string = `${process.cwd()}/keys.txt`;
 
-xdescribe('Express server', () => {
-  beforeAll(async () => {
-    const { host, port } = config.server;
-    server = app.listen({ port, host }, () => {
-      console.log(`🚀 Server ready at http://${host}:${port}`);
-    });
-  });
-
+describe('Express server', () => {
   afterAll(async () => {
     // Clean up
-    server.close();
     if (fs.existsSync(keyFile)) {
       fs.unlinkSync(keyFile);
     }

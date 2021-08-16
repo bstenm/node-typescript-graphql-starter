@@ -1,1 +1,2 @@
 * Set up winston logging
+* Is "runInBand" option working for jest e2e tests? 
