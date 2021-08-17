@@ -1,5 +1,5 @@
-import express, { Application } from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
+import { PubSub } from 'graphql-subscriptions';
 // For typegraphql type refelction to work (https://typegraphql.com/docs/installation.html)
 import 'reflect-metadata';
 import { User } from './entity/User';
@@ -38,10 +38,6 @@ const resolvers = {
   },
 };
 
-const app: Application = express();
-
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
-apolloServer.applyMiddleware({ app });
-
-export { app, apolloServer };
+export { apolloServer };
