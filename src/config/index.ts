@@ -9,7 +9,7 @@ export default {
   server: {
     host: process.env.SERVER_HOST,
     port: process.env.SERVER_PORT,
-    path: 'graphql',
+    path: process.env.SERVER_PATH,
   },
   database: {
     type: 'postgres',
