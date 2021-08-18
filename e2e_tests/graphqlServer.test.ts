@@ -1,13 +1,15 @@
-import supertest from 'supertest';
+import supertest, { SuperTest, Test } from 'supertest';
 import { Connection, createConnection } from 'typeorm';
-import { app } from '../src/graphqlServer';
+import { graphqlServer } from '../src/graphqlServer';
 
 let connection: Connection;
 
-const request = supertest(app);
-
 describe('Graphql server', () => {
+  let request: SuperTest<Test>;
+
   beforeAll(async () => {
+    const { httpServer } = await graphqlServer();
+    request = supertest(httpServer);
     connection = await createConnection('test');
   });
 
