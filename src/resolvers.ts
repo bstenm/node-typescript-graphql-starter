@@ -8,7 +8,7 @@ const pubsub = new PubSub();
 
 export const resolvers = {
   Query: {
-    hello: (_: any, { name }: { name: string }) => `Yo ${name}!`,
+    hello: () => `Yo Bro!`,
   },
 
   Mutation: {

@@ -8,7 +8,7 @@ export const typeDefs = gql`
   }
   type Query {
     user(id: ID!): User!
-    hello(name: String!): String!
+    hello: String!
   }
   type Mutation {
     createUser(email: String!, username: String): User
