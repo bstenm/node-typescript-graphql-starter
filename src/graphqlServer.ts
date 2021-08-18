@@ -16,11 +16,18 @@ export const graphqlServer = async () => {
   await apolloServer.start();
   apolloServer.applyMiddleware({ app });
   const path = apolloServer.graphqlPath;
-  // TWraps the http server so that we can serve the subscriptions over a Websocket protocol
-  // (https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md)
-  new SubscriptionServer(
+  // TWraps the http server so that we can serve
+  // the subscriptions over a Websocket protocol
+  // https://github.com/apollographql/subscriptions-transport-ws/blob/master/PROTOCOL.md
+  const subscriptionServer = new SubscriptionServer(
     { execute, subscribe, schema },
     { server: httpServer, path }
   );
+  // Shut down in the case of interrupt and termination signals
+  // We expect to handle this more cleanly in the future.
+  // https://github.com/apollographql/apollo-server/issues/5074
+  ['SIGINT', 'SIGTERM'].forEach((signal) => {
+    process.on(signal, () => subscriptionServer.close());
+  });
   return { httpServer, path };
 };
