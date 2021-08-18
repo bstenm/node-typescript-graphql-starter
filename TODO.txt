@@ -1,2 +1,3 @@
 * Set up winston logging
 * Is "runInBand" option working for jest e2e tests? 
+* Replace subscriptions-transport-ws with graphql-ws?
