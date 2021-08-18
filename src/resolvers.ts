@@ -19,9 +19,9 @@ export const resolvers = {
       const user = new User();
       user.email = email;
       user.username = username;
-      const result = await Orm.addUser(user);
-      pubsub.publish(ADDED_USER, { userAdded: result });
-      return result;
+      const newUser = await Orm.addUser(user);
+      pubsub.publish(ADDED_USER, { userAdded: newUser });
+      return newUser;
     },
   },
 
