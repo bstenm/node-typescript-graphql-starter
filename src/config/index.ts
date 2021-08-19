@@ -1,16 +1,18 @@
-import path from 'path';
+import * as nodePath from 'path';
 import * as dotenv from 'dotenv';
 
 dotenv.config({
-  path: path.resolve(`${__dirname}/../../.env.${process.env.NODE_ENV}.local`),
+  path: nodePath.resolve(
+    `${__dirname}/../../.env.${process.env.NODE_ENV}.local`
+  ),
 });
 
+const host = process.env.SERVER_HOST;
+const port = process.env.SERVER_PORT;
+const path = process.env.SERVER_PATH;
+
 export default {
-  server: {
-    host: process.env.SERVER_HOST,
-    port: process.env.SERVER_PORT,
-    path: process.env.SERVER_PATH,
-  },
+  server: { host, port, path },
   database: {
     type: 'postgres',
     host: process.env.DB_HOST,
@@ -20,5 +22,9 @@ export default {
     name: process.env.DB_NAME,
     synchronize: true,
     logging: false,
+  },
+  endPoint: {
+    ws: `ws://${host}:${port}${path}`,
+    http: `http://${host}:${port}${path}`,
   },
 };
