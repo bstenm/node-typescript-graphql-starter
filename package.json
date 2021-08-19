@@ -24,7 +24,6 @@
   "dependencies": {
     "@apollo/client": "^3.4.8",
     "@graphql-tools/schema": "^8.1.1",
-    "apollo-link-ws": "^1.0.20",
     "apollo-server-express": "^3.1.2",
     "class-validator": "^0.13.1",
     "cross-fetch": "^3.1.4",
@@ -34,7 +33,6 @@
     "graphql-tag": "^2.12.5",
     "helmet": "^4.6.0",
     "pg": "^8.7.1",
-    "react": "^17.0.2",
     "reflect-metadata": "^0.1.13",
     "subscriptions-transport-ws": "^0.9.19",
     "type-graphql": "^1.1.1",
