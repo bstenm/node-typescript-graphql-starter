@@ -1,6 +1,6 @@
 import { createConnection } from 'typeorm';
 import { log } from './logger';
-import config from './config';
+import { config } from './config';
 import { graphqlServer } from './graphqlServer';
 
 (async () => {

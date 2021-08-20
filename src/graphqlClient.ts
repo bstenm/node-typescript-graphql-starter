@@ -10,7 +10,7 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import config from './config';
+import { config } from './config';
 // The apollo client expect an implementation of "fetch" available globally
 import 'cross-fetch/polyfill';
 
