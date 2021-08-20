@@ -19,6 +19,9 @@ _*.ts
 # back up
 /bu
 
+# generated
+migration
+
 # misc
 .DS_Store
 .env.local
