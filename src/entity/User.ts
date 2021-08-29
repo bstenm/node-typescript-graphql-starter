@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Field, ID, ObjectType } from 'type-graphql';
 import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,7 +15,7 @@ export class User {
   email!: string;
 
   @Field(() => String)
-  @Column({ nullable: true })
+  @Column('text', { nullable: true })
   username!: string;
 
   @BeforeInsert()
